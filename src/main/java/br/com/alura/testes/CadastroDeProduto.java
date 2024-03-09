@@ -2,6 +2,7 @@ package br.com.alura.testes;
 
 import br.com.alura.dao.ProdutoDao;
 import br.com.alura.modelo.Produto;
+import br.com.alura.modelo.enums.Categoria;
 import jakarta.persistence.EntityManager;
 
 import java.math.BigDecimal;
@@ -13,10 +14,7 @@ public class CadastroDeProduto {
     public static void main(String[] args) {
         EntityManager entityManager = getEntityManager();
 
-        Produto celular = new Produto();
-        celular.setNome("Redmi note 9 PRO");
-        celular.setDescricao("Com memória de 258GB e RAM de 6GB");
-        celular.setPreco(new BigDecimal("2000.00"));
+        Produto celular = new Produto("Redmi note 9 PRO", "Com memória de 258GB e RAM de 6GB", new BigDecimal("2000.00"), Categoria.CELULARES);
 
         ProdutoDao produtoDao = new ProdutoDao(entityManager);
 
