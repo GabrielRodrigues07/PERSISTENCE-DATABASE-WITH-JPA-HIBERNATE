@@ -26,8 +26,11 @@ public class CadastroDeProduto {
         categoriaDao.cadastrar(categoria);
         produtoDao.cadastrar(celular);
 
-        entityManager.getTransaction().commit();
+        entityManager.flush();
+        entityManager.clear();
 
-        entityManager.close();
+        entityManager.merge(categoria);
+        categoria.setNome("Test");
+
     }
 }
