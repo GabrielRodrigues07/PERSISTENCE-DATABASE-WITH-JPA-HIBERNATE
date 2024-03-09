@@ -2,8 +2,8 @@ package br.com.alura.testes;
 
 import br.com.alura.dao.CategoriaDao;
 import br.com.alura.dao.ProdutoDao;
-import br.com.alura.modelo.Produto;
 import br.com.alura.modelo.Categoria;
+import br.com.alura.modelo.Produto;
 import jakarta.persistence.EntityManager;
 
 import java.math.BigDecimal;
@@ -26,11 +26,8 @@ public class CadastroDeProduto {
         categoriaDao.cadastrar(categoria);
         produtoDao.cadastrar(celular);
 
-        entityManager.flush();
-        entityManager.clear();
-
-        entityManager.merge(categoria);
-        categoria.setNome("Test");
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
     }
 }
