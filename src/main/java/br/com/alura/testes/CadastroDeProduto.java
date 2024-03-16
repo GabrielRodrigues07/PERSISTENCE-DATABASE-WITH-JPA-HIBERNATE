@@ -25,7 +25,15 @@ public class CadastroDeProduto {
 
         List<Produto> produtos = produtoDao.buscarTodos();
         System.out.println("list " + produtos);
-    }
+
+        List<Produto> produtosPorNome = produtoDao.buscarPorNome(produto.getNome());
+
+        System.out.println("Produto por nome: " + produtosPorNome);
+
+        List<Produto> produtosPorNomeDaCategoria = produtoDao.buscarPorNomeDaCategoria(produto.getCategoria().getNome());
+
+        System.out.println("Produto por nome da categoria: " + produtosPorNomeDaCategoria);
+}
 
     private static void cadastrarProduto() {
         EntityManager entityManager = getEntityManager();
