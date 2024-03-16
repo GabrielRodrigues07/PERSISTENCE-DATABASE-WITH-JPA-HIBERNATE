@@ -7,12 +7,27 @@ import br.com.alura.modelo.Produto;
 import jakarta.persistence.EntityManager;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static br.com.alura.util.JPAUtil.getEntityManager;
 
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
+        cadastrarProduto();
+
+        EntityManager entityManager = getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(entityManager);
+
+        Produto produto = produtoDao.buscarPorId(1L);
+
+        System.out.println(produto);
+
+        List<Produto> produtos = produtoDao.buscarTodos();
+        System.out.println("list " + produtos);
+    }
+
+    private static void cadastrarProduto() {
         EntityManager entityManager = getEntityManager();
 
         Categoria categoria = new Categoria("CELULARES");
@@ -28,6 +43,5 @@ public class CadastroDeProduto {
 
         entityManager.getTransaction().commit();
         entityManager.close();
-
     }
 }
