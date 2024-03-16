@@ -33,6 +33,10 @@ public class CadastroDeProduto {
         List<Produto> produtosPorNomeDaCategoria = produtoDao.buscarPorNomeDaCategoria(produto.getCategoria().getNome());
 
         System.out.println("Produto por nome da categoria: " + produtosPorNomeDaCategoria);
+
+        BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProduto(produto.getId());
+
+        System.out.println("Produto do produto: " + precoDoProduto);
 }
 
     private static void cadastrarProduto() {
