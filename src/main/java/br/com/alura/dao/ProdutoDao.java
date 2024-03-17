@@ -28,19 +28,19 @@ public class ProdutoDao {
 
     public List<Produto> buscarPorNome(String nome) {
         return entityManager.createQuery("SELECT p FROM Produto p WHERE p.nome = :nome", Produto.class)
-                .setParameter("nome", nome)
+                .setParameter(Produto.Fields.nome, nome)
                 .getResultList();
     }
 
     public List<Produto> buscarPorNomeDaCategoria(String nome) {
         return entityManager.createQuery("SELECT p FROM Produto p WHERE p.categoria.nome = :nome", Produto.class)
-                .setParameter("nome", nome)
+                .setParameter(Produto.Fields.nome, nome)
                 .getResultList();
     }
 
     public BigDecimal buscarPrecoDoProduto(Long id) {
         return entityManager.createQuery("SELECT p.preco FROM Produto p WHERE p.id = :id", BigDecimal.class)
-                .setParameter("id", id)
+                .setParameter(Produto.Fields.id, id)
                 .getSingleResult();
     }
 }

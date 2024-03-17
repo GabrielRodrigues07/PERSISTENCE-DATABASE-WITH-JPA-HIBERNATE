@@ -1,9 +1,17 @@
 package br.com.alura.modelo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 
 @Entity
 @Table(name = "categorias")
+@Data
+@FieldNameConstants
+@NoArgsConstructor
+@AllArgsConstructor
 public class Categoria {
 
     @Id
@@ -11,26 +19,7 @@ public class Categoria {
     private Long id;
     private String nome;
 
-    public Categoria() {
-    }
-
     public Categoria(String nome) {
         this.nome = nome;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    @Override
-    public String toString() {
-        return "Categoria{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
     }
 }
